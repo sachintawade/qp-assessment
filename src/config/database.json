@@ -1,0 +1,16 @@
+{
+    "dev": {
+        "driver": "mysql",
+        "host": "localhost",
+        "user": "root",
+        "password": "root",
+        "database": "grocery_app"
+    },
+    "production": {
+        "driver": "mysql",
+        "host": "localhost",
+        "user": "root",
+        "password": "root",
+        "database": "grocery_app_prod"
+    }
+}

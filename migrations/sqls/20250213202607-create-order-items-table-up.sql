@@ -1,0 +1,11 @@
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    item_id INT NOT NULL,
+    FOREIGN KEY (item_id) REFERENCES grocery_items(id),
+    quantity INTEGER NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

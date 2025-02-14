@@ -1,0 +1,66 @@
+# version: '3.8'
+# services:
+#   db:
+#     image: mysql:8
+#     environment:
+#       MYSQL_ROOT_PASSWORD: root
+#       MYSQL_DATABASE: grocery_app
+#     ports:
+#       - "3306:3306"
+#     volumes:
+#       - mysql_data:/var/lib/mysql
+#     networks:
+#       - app_network
+#   api:
+#     build: .
+#     ports:
+#       - "3000:3000"
+#     depends_on:
+#       - db
+#     environment:
+#       MYSQL_HOST: db
+#       MYSQL_USER: root
+#       MYSQL_PASSWORD: root
+#       MYSQL_DATABASE: grocery_app
+#     volumes:
+#       - .:/app
+#     command: npm run start
+
+# volumes:
+#   mysql_data:
+
+# networks:
+#   app_network:
+#     driver: bridge
+
+
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    container_name: groceryapp_db_1
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - groceryapp_network
+    ports:
+      - "3306:3306"
+
+  api:
+    image: groceryApplication
+    container_name: groceryapp_api_1
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: grocery_app
+    networks:
+      - groceryapp_network
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+
+networks:
+  groceryapp_network:
+    driver: bridge
